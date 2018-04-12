@@ -1,0 +1,44 @@
+<qa:browsers xmlns:qa="urn:config.gridrouter.qatools.ru">
+
+    <browser name="firefox" defaultVersion="59.0">
+        <version number="59.0">
+            <region name="1">
+                <host name="localhost" port="4445" count="10"/>
+            </region>
+        </version>
+        <version number="58.0">
+            <region name="1">
+                <host name="localhost" port="4445" count="10"/>
+            </region>
+        </version>
+    </browser>
+
+    <browser name="chrome" defaultVersion="65.0">
+        <version number="65.0">
+            <region name="1">
+                <host name="localhost" port="4445" count="10"/>
+            </region>
+        </version>
+        <version number="64.0">
+            <region name="1">
+                <host name="localhost" port="4445" count="10"/>
+            </region>
+        </version>
+    </browser>
+
+    <browser name="opera" defaultVersion="52.0">
+        <version number="52.0">
+            <region name="1">
+                <host name="localhost" port="4445" count="10"/>
+            </region>
+        </version>
+        <version number="51.0">
+            <region name="1">
+                <host name="localhost" port="4445" count="10"/>
+            </region>
+        </version>
+    </browser>
+
+</qa:browsers>
+
+<!--Run after saving of the test.xml file: <<< $ docker kill -s HUP ggr >>>-->

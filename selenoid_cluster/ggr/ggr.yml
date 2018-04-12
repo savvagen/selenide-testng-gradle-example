@@ -1,0 +1,8 @@
+version: '3'
+services:
+  ggr:
+    image: aerokube/ggr:latest-release
+    container_name: ggr
+    volumes:
+      - "/etc/grid-router/:/etc/grid-router:ro"
+    network_mode: "host"

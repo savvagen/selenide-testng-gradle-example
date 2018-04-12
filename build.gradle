@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
+}
+
+group 'com.demo'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'io.qameta.allure'
+
+
+allure {
+    autoconfigure = true
+    version = '2.6.0'
+    useTestNG {
+        version = "2.6.0"
+    }
+
+    downloadLink = 'https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.zip'
+}
+
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.testng:testng:6.13.1'
+    compile group: 'com.codeborne', name: 'selenide', version: '4.10'
+    compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.6.0'
+
+    compile group: 'org.testcontainers', name: 'testcontainers', version: '1.7.0'
+    testCompile group: 'org.testcontainers', name: 'selenium', version: '1.7.0'
+    compile group: 'org.testcontainers', name: 'docker-compose', version: '0.9.9'
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0'
+    jarFile = './gradle/wrapper/gradle-wrapper.jar'
+}
+
+
+import io.qameta.allure.gradle.task.AllureReport
+
+task allureAggregatedReport(type: AllureReport) {
+    allure.resultsDir
+}
+
+test{
+    systemProperty "file.encoding", "utf-8"
+    systemProperty "log4j.configuration", "file:///path/to/log4j.properties"
+    useTestNG() {
+        suiteXmlFiles << new File("src/test/resources/", "suite.xml")
+    }
+}
+//test.finalizedBy allureAggregatedReport
+
+
+
+
+
+
