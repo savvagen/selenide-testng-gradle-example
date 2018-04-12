@@ -1,3 +1,6 @@
 .idea
 .gradle
 /selenoid_cluster/video
+/selenoid_cluster/selenoid-grafana/data
+/out
+/build
